@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "hbs": "^4.2.0"
   },
   "engines": {
-  "node": "16.18.1"
-}
+    "node": "16.18.1"
+  }
 }
