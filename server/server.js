@@ -34,11 +34,11 @@ io.on("connection", (socket) => {
 //   socket.on("createEmail", (newEmail) => {
 //     console.log("createEmail", newEmail);
 //   });
-socket.on("createMessage", (message) => {
+socket.on("createMessage", (message, callback) => {
   console.log("createMessage", message);
-  io.emit("newMessage", generateMessage("admin", 'welcome'));
-  socket.emit("newMessage", generateMessage('admin', 'new user joined')
-    );
+  io.emit("newMessage", generateMessage(message.from, message.text));
+  callback('This is from server')
+});
 
   // socket.broadcast.emit from Admin text New user joined
 socket.broadcast.emit("newMessage", {
@@ -52,7 +52,6 @@ socket.broadcast.emit("newMessage", {
   //   text: message.text,
   //   createdAt: new Date().getTime(),
   // });
-});
 });
 io.on("disconnect", () => {
   console.log("User was disconnected");
